@@ -27,7 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1C13A1C62A6A24ED0023B72E /* Ariabnb */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Ariabnb; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C13A1C62A6A24ED0023B72E /* Nitrobnb */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Nitrobnb; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C13A1C92A6A24ED0023B72E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		1C13A1D22A6A251E0023B72E /* Manual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manual.swift; sourceTree = "<group>"; };
 		1C13A1D42A6A253C0023B72E /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -57,7 +57,7 @@
 		1C13A1C72A6A24ED0023B72E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C13A1C62A6A24ED0023B72E /* Ariabnb */,
+				1C13A1C62A6A24ED0023B72E /* Nitrobnb */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,9 +93,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1C13A1C52A6A24ED0023B72E /* Ariabnb */ = {
+		1C13A1C52A6A24ED0023B72E /* Nitrobnb */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C13A1CD2A6A24ED0023B72E /* Build configuration list for PBXNativeTarget "Ariabnb" */;
+			buildConfigurationList = 1C13A1CD2A6A24ED0023B72E /* Build configuration list for PBXNativeTarget "Nitrobnb" */;
 			buildPhases = (
 				1C13A1C22A6A24ED0023B72E /* Sources */,
 				1C13A1C32A6A24ED0023B72E /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = Ariabnb;
+			name = Nitrobnb;
 			productName = Ariabnb;
-			productReference = 1C13A1C62A6A24ED0023B72E /* Ariabnb */;
+			productReference = 1C13A1C62A6A24ED0023B72E /* Nitrobnb */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -125,7 +125,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1C13A1C12A6A24ED0023B72E /* Build configuration list for PBXProject "Ariabnb" */;
+			buildConfigurationList = 1C13A1C12A6A24ED0023B72E /* Build configuration list for PBXProject "Nitrobnb" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -138,7 +138,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1C13A1C52A6A24ED0023B72E /* Ariabnb */,
+				1C13A1C52A6A24ED0023B72E /* Nitrobnb */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1C13A1C12A6A24ED0023B72E /* Build configuration list for PBXProject "Ariabnb" */ = {
+		1C13A1C12A6A24ED0023B72E /* Build configuration list for PBXProject "Nitrobnb" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C13A1CB2A6A24ED0023B72E /* Debug */,
@@ -306,7 +306,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C13A1CD2A6A24ED0023B72E /* Build configuration list for PBXNativeTarget "Ariabnb" */ = {
+		1C13A1CD2A6A24ED0023B72E /* Build configuration list for PBXNativeTarget "Nitrobnb" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C13A1CE2A6A24ED0023B72E /* Debug */,
