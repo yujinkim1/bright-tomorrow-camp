@@ -4,16 +4,6 @@
 //
 //  Created by Yujin Kim on 2023-07-20.
 //
-/**
- * 스파르타코딩클럽 내일배움캠프 Swift 기초 주차 과제
- * 나만의 계산기를 단계별로 작업하면서 Swift 문법 활용 능력을 향상시킨다.
- * [Manual], [Interface]는 별도로 작업한 내용으로 콘솔 GUI와 관련있는 부분
- * 해결이 필요한 작업
- * [AddOperation], [SubtractOperation], [MultipleOperation], [DividerOperation] 구조체를 하나로 추상화하는 작업
- * 사용자가 입력한 값이 자연수인지 부동소수인지에 따라 결과 값의 표현이 달라져야 하는 작업
- *
- */
-
 import Foundation
 
 let interface = Interface()
