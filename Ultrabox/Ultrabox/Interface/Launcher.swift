@@ -10,21 +10,20 @@ import Foundation
 let manual = Manual()
 let layout = Layout()
 let deposit = Deposit()
-
+let authenticate = Authenticate()
+var user = User(name: "김유진", cash: deposit.randomCash(), reservedMovie: [])
+// MARK: [app]을 실행
 func app() {
-	//MARK: 랜덤 금액을 입금
-	print(manual.yourName)
-	guard let username: String = readLine() else { return }
-	var currentCash: Double = deposit.randomCash()
-	let user = User(name: username, cash: currentCash, reservedMovie: [])
-	//MARK: Run console without debug build
-	print(manual.on)
+	// print(manual.auth)
+	// guard let user: User = authenticate.setUser() else { return }
+	// 기본 텍스트 인터페이스를 표시합니다.
+	print(manual.wakeup)
 	print(layout.shrink())
 	print("\(user.name)님 환영해요!")
-	print("현재 잔액: \(user.cash)")
+	print("보유 금액: \(user.cash)")
 	print(layout.shrink())
-	print(manual.selectMenu)
-	layout.showMenus()
+	layout.showHome()
+	// 사용자는 정해진 입력방식을 통해 원하는 기능을 사용할 수 있습니다.
 	while true {
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
@@ -33,16 +32,15 @@ func app() {
 		switch selected {
 			case "1":
 				layout.showCurrentMovies()
-			case "D":
-				layout.showCurrentMoviesDetails()
 			case "2":
 				layout.selectMovie()
 			case "3":
-				print("준비 중입니다.")
+				layout.showReservedMovies()
 			case "4":
-				print("준비 중입니다.")
+				// TODO: 팝콘, 음료 등 구매
+				print("푸드 구매")
 			case "5":
-				print(manual.off)
+				print(manual.sleep)
 				break
 			default:
 				continue
