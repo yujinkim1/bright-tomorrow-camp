@@ -117,19 +117,27 @@ struct Layout {
 		return "---------"
 	}
 	
-	func showMenus() {
+	func loader(message: String) {
+		print(message)
+		sleep(1)
+		print(manual.loading)
+		sleep(3)
+	}
+	// [showHome] 메소드는 상위 메뉴를 표시합니다.
+	func showHome() {
+		print(manual.selectMenu)
 		for (index, menu) in menus.enumerated() {
 			print("\(index + 1). \(menu.title) | \(menu.description)")
 		}
 	}
 	
-	// [showCurrentMovie] 메소드는 현재 상영 중인 영화를 모두 보여줍니다.
+	// [showCurrentMovie] 메소드는 현재 상영 중인 영화를 모두 표시합니다.
 	func showCurrentMovies() {
 		for (index, movie) in currentMovies.enumerated() {
 			print("\(index + 1). \(movie.title)   \n   \(movie.category) | \(movie.runningTime)")
 			print("----------")
 		}
-		print("자세히: [D] \(spacer()) 뒤로: [0]")
+		print("자세히: [D] \(spacer()) 뒤로: [B]")
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
 			return
@@ -137,8 +145,8 @@ struct Layout {
 		switch selected {
 			case "D":
 				showCurrentMoviesDetails()
-			case "0":
-				showMenus()
+			case "B":
+				showHome()
 			default:
 				print("번호가 잘못되었습니다. 다시 선택해주세요.")
 				showCurrentMovies()
@@ -151,16 +159,16 @@ struct Layout {
 			print("\(index + 1). \(movie.title)   \n   \(movie.category) | \(movie.runningTime)   \n   \(movie.plot)")
 			print("----------")
 		}
-		print("뒤로: [1] \(spacer()) 홈: [0]")
+		print("뒤로: [B] \(spacer()) 홈: [H]")
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
 			return
 		}
 		switch selected {
-			case "1":
+			case "B":
 				showCurrentMovies()
-			case "0":
-				showMenus()
+			case "H":
+				showHome()
 			default:
 				print("번호가 잘못되었습니다. 다시 선택해주세요.")
 				showCurrentMoviesDetails()
@@ -204,8 +212,8 @@ struct Layout {
 		}
 		switch selected {
 			case "Y":
-				print("예매가 취소되었어요.")
-				showMenus()
+				loader(message: "예매를 취소하고 홈으로 돌아갑니다.")
+				showHome()
 			case "N":
 				selectMovie()
 			default:
@@ -213,11 +221,12 @@ struct Layout {
 				cancelSelectMovie()
 		}
 	}
-	
 	// [reserveMovie] 메소드는 현재 사용자가 선택한 영화 예매를 진행합니다.
 	func reserveMovie(number: Int) {
 		let selectedMovie = currentMovies[number - 1]
 		print("선택하신 영화 [\(selectedMovie.title)] 예매를 진행할까요?")
+		print("가격은 [\(selectedMovie.price)] 입니다.")
+		print("잔액은 [\(user.cash)] 입니다.")
 		print("예: [Y] \(spacer()) 아니요: [N]")
 		
 		guard let selected = readLine()?.uppercased() else {
@@ -229,14 +238,35 @@ struct Layout {
 		switch selected {
 			case "Y":
 				// MARK: 사용자의 잔액에서 예매 금액을 차감하고, 예매 진행
-				print("예매가 완료되었습니다.")
-				showMenus()
+				if user.cash >= selectedMovie.price {
+					user.cash -= selectedMovie.price
+					user.reservedMovie.append(selectedMovie)
+					print("예매가 완료되었습니다.")
+					loader(message: "홈으로 돌아갑니다.")
+					showHome()
+				} else {
+					print("금액이 부족하여 예매를 실패했습니다.")
+					loader(message: "홈으로 돌아갑니다.")
+					showHome()
+				}
 			case "N":
-				print("예매가 취소되었습니다.")
+				loader(message: "예매를 취소하고 영화 선택화면으로 돌아갑니다.")
 				selectMovie()
 			default:
 				print("번호가 잘못되었습니다. 다시 선택해주세요.")
 				selectMovie()
+		}
+	}
+	
+	// [showReservedMovies] 메소드는 사용자가 예매한 영화를 보여줍니다.
+	func showReservedMovies() {
+		if user.reservedMovie.isEmpty {
+			print("최근 예매한 영화가 없습니다.")
+		} else {
+			print("****예매한 영화****")
+			for movie in user.reservedMovie {
+				print("\(movie.title) | \(movie.category) | \(movie.runningTime)")
+			}
 		}
 	}
 }
