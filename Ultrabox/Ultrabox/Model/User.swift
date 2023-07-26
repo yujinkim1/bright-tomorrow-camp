@@ -9,7 +9,6 @@ import Foundation
 
 struct User {
 	let name: String
-	let cash: Double
-	let reservedMovie: [Movie]
-	// let boughtFood: [Food]
+	var cash: Double
+	var reservedMovie: [Movie]
 }
