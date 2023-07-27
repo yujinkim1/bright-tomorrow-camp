@@ -9,7 +9,7 @@ import Foundation
 
 struct Deposit {
 	func randomCash() -> Double {
-		let value = Double.random(in: 5.5...15.0)
+		let value = Double.random(in: 25.0...45.0)
 		return round(value * 10) / 10
 	}
 }
