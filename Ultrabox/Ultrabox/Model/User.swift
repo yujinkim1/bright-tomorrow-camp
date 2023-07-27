@@ -11,4 +11,5 @@ struct User {
 	let name: String
 	var cash: Double
 	var reservedMovie: [Movie]
+	var snacks: [Snack]
 }
