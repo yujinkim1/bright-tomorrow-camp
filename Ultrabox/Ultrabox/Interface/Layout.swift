@@ -18,7 +18,7 @@
  * 10. 범죄도시 3, 1시간 45분, 액션
  * 11.스파이더맨: 어크로스 더 유니버스, 2시간 20분, 액션
  * 12.슈퍼키드 헤일리, 1시간 15분, 애니메이션
- * 팝콘, 음료도 추가하면 좋을듯
+ * 스낵 메뉴
  */
 import Foundation
 
@@ -105,6 +105,21 @@ struct Layout {
 		),
 	]
 	
+	let currentSnacks: [Snack] = [
+		Snack(name: "팝콘(소금맛) SINGLE", price: 8.0),
+		Snack(name: "팝콘(카라멜) SINGLE", price: 8.5),
+		Snack(name: "팝콘(소금맛) COMBO", price: 14.0),
+		Snack(name: "팝콘(카라멜) COMBO", price: 14.0),
+		Snack(name: "버터오징어", price: 7.0),
+		Snack(name: "나초", price: 7.0),
+		Snack(name: "치즈 포테이토", price: 4.0),
+		Snack(name: "핫도그", price: 4.5),
+		Snack(name: "콜라", price: 3.0),
+		Snack(name: "펩시", price: 3.0),
+	]
+	
+	var cart: [Snack] = []
+	
 	func spacer() -> String {
 		return "          "
 	}
@@ -120,12 +135,12 @@ struct Layout {
 	func loader(message: String) {
 		print(message)
 		sleep(1)
-		print(manual.loading)
+		print(manual.isLoading)
 		sleep(3)
 	}
 	// [showHome] 메소드는 상위 메뉴를 표시합니다.
 	func showHome() {
-		print(manual.selectMenu)
+		print(manual.isHomeMenu)
 		for (index, menu) in menus.enumerated() {
 			print("\(index + 1). \(menu.title) | \(menu.description)")
 		}
@@ -138,6 +153,7 @@ struct Layout {
 			print("----------")
 		}
 		print("자세히: [D] \(spacer()) 뒤로: [B]")
+		print(manual.inputLine, terminator: " ")
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
 			return
@@ -160,6 +176,7 @@ struct Layout {
 			print("----------")
 		}
 		print("뒤로: [B] \(spacer()) 홈: [H]")
+		print(manual.inputLine, terminator: " ")
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
 			return
@@ -182,6 +199,7 @@ struct Layout {
 			print("----------")
 		}
 		print("예매: [영화 번호] \(spacer()) 취소: [C]")
+		print(manual.inputLine, terminator: " ")
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
 			selectMovie()
@@ -204,9 +222,9 @@ struct Layout {
 	func cancelSelectMovie() {
 		print("예매를 취소할까요?")
 		print("예: [Y] \(spacer()) 아니요: [N]")
-		
+		print(manual.inputLine, terminator: " ")
 		guard let selected = readLine()?.uppercased() else {
-			print("입력이 잘못되었습니다. 다시 입력해주세요.")
+			print(manual.isWrong)
 			selectMovie()
 			return
 		}
@@ -217,7 +235,7 @@ struct Layout {
 			case "N":
 				selectMovie()
 			default:
-				print("입력이 잘못되었습니다. 다시 입력해주세요.")
+				print(manual.isWrong)
 				cancelSelectMovie()
 		}
 	}
@@ -228,7 +246,7 @@ struct Layout {
 		print("가격은 [\(selectedMovie.price)] 입니다.")
 		print("잔액은 [\(user.cash)] 입니다.")
 		print("예: [Y] \(spacer()) 아니요: [N]")
-		
+		print(manual.inputLine, terminator: " ")
 		guard let selected = readLine()?.uppercased() else {
 			print("번호가 잘못되었습니다. 다시 선택해주세요.")
 			selectMovie()
@@ -237,13 +255,11 @@ struct Layout {
 		
 		switch selected {
 			case "Y":
-				// MARK: 사용자의 잔액에서 예매 금액을 차감하고, 예매 진행
 				if user.cash >= selectedMovie.price {
 					user.cash -= selectedMovie.price
 					user.reservedMovie.append(selectedMovie)
 					print("예매가 완료되었습니다.")
-					loader(message: "홈으로 돌아갑니다.")
-					showHome()
+					showOneMoreThing()
 				} else {
 					print("금액이 부족하여 예매를 실패했습니다.")
 					loader(message: "홈으로 돌아갑니다.")
@@ -266,6 +282,69 @@ struct Layout {
 			print("****예매한 영화****")
 			for movie in user.reservedMovie {
 				print("\(movie.title) | \(movie.category) | \(movie.runningTime)")
+			}
+		}
+	}
+	
+	// [showOneMoreThing] 메소드는 사용자에게 추가 구매를 제안합니다.
+	func showOneMoreThing() {
+		print("영화를 예매해주셔서 감사합니다. 스낵을 살펴보시겠어요?")
+		print("예: [Y] \(spacer()) 아니요: [N]")
+		print(manual.inputLine, terminator: " ")
+		guard let selected = readLine()?.uppercased() else {
+			print(manual.isWrong)
+			return
+		}
+		switch selected {
+			case "Y":
+				showSnacks()
+			case "N":
+				loader(message: "홈으로 돌아갑니다.")
+				showHome()
+			default:
+				showHome()
+		}
+	}
+	
+	// [showSnacks] 메소드는 사용자가 추가 구매에 응했거나, 홈 화면에서 스낵 메뉴를 나타낼 때 사용합니다.
+	func showSnacks() {
+		print(manual.isSnack)
+		for (number, snack) in currentSnacks.enumerated() {
+			print("\(number + 1). \(snack.name) | \(snack.price)")
+			print(divider())
+		}
+		print(manual.puts)
+		print("담기: [음식 번호] \(spacer()) 장바구니: [E] \(spacer()) 취소: [C]")
+		print(manual.inputLine, terminator: " ")
+		guard let selected = readLine()?.uppercased() else {
+			print(manual.isWrong)
+			return
+		}
+		switch selected {
+			case "C":
+				loader(message: "홈으로 돌아갑니다.")
+				showHome()
+			case "E":
+				showHome()
+			default:
+				if let selectedNumber = Int(selected), (1...currentSnacks.count).contains(selectedNumber) {
+					let selectedSnack = currentSnacks[selectedNumber - 1]
+					print("\(selectedSnack.name)가 장바구니에 추가되었습니다.")
+				} else {
+					print("잘못된 번호입니다.")
+				}
+				showHome()
+		}
+	}
+	
+	// [showUserSnack] 메소드는 사용자가 구매한 스낵을 목록 형태로 보여줍니다.
+	func showUserSnack() {
+		if user.snacks.isEmpty {
+			print(manual.isCartEmpty)
+		} else {
+			print("****구매한 스낵****")
+			for snack in user.snacks {
+				print("\(snack.name)")
 			}
 		}
 	}
