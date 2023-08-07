@@ -18,13 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-j4-G4D">
-                                <rect key="frame" x="66" y="320" width="260" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-j4-G4D">
+                                <rect key="frame" x="20" y="275" width="353" height="82"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" imagePlacement="leading" title="Todo" subtitle="해야할 일 확인하기" imagePadding="30" titlePadding="4" buttonSize="large" titleAlignment="leading">
+                                <buttonConfiguration key="configuration" style="filled" imagePlacement="leading" title="Todo" subtitle="해야할 일 확인하기" imagePadding="30" titlePadding="4" cornerStyle="dynamic" buttonSize="large" titleAlignment="leading">
                                     <imageReference key="image" image="checklist.unchecked" catalog="system" symbolScale="large" variableValue="0.0"/>
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </backgroundConfiguration>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="bold"/>
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
                                     <fontDescription key="subtitleFontDescription" type="system" pointSize="16"/>
                                 </buttonConfiguration>
@@ -32,20 +35,29 @@
                                     <segue destination="8vm-uY-mi6" kind="show" id="pnu-hk-twW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7i-U7-mUT">
-                                <rect key="frame" x="66" y="425" width="260" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7i-U7-mUT">
+                                <rect key="frame" x="20" y="407" width="353" height="81"/>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" imagePlacement="leading" title="Done" subtitle="완료한 일 확인하기" imagePadding="30" titlePadding="4" buttonSize="large" titleAlignment="leading">
                                     <imageReference key="image" image="checklist.checked" catalog="system" symbolScale="large" variableValue="0.0"/>
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="24"/>
                                     <fontDescription key="subtitleFontDescription" type="system" pointSize="16"/>
+                                    <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bWA-j4-G4D" secondAttribute="trailing" constant="20" id="Km0-et-HbG"/>
+                            <constraint firstItem="bWA-j4-G4D" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="MNA-Bm-iQ1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="z7i-U7-mUT" secondAttribute="bottom" constant="330" id="VFg-YP-ijC"/>
+                            <constraint firstItem="z7i-U7-mUT" firstAttribute="top" secondItem="bWA-j4-G4D" secondAttribute="bottom" constant="50" id="awi-iU-Uno"/>
+                            <constraint firstItem="z7i-U7-mUT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bSK-9B-fpD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z7i-U7-mUT" secondAttribute="trailing" constant="20" id="muq-WP-OCB"/>
+                            <constraint firstItem="bWA-j4-G4D" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="pdL-jn-sOl"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YxA-Kn-vuy"/>
                 </viewController>
