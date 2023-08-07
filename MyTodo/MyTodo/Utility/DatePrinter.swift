@@ -15,4 +15,10 @@ class DatePrinter {
 		return dateFormatter.string(from: Date())
 	}
 	
+	static func createTime() -> String {
+		let dateFormatter: DateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "HH:mm"
+		return dateFormatter.string(from: Date())
+	}
+	
 }
