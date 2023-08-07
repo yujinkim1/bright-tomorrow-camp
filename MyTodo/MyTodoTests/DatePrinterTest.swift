@@ -31,5 +31,16 @@ final class DatePrinterTest: XCTestCase {
 		//MARK: Then (Assert)
 		XCTAssertEqual(testCreatedTime, validationTodoModel.createdTime)
 	}
+	
+	func testDateTimeFormat() {
+		//MARK: Given (Arrange)
+		let rawCreatedTime: String = "17:58"
+		
+		//MARK: When (Act)
+		let validationTodoModel: Todo = Todo(id: 1, content: "테스트 셀", createdTime: DatePrinter.createTime(), isCompleted: false)
+		
+		//MARK: Then (Assert)
+		XCTAssertEqual(rawCreatedTime, validationTodoModel.createdTime)
+	}
 
 }
