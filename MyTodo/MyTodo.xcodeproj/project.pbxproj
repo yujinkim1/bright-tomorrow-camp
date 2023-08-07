@@ -18,6 +18,10 @@
 		1C10CECD2A7E93B800B38BA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CECC2A7E93B800B38BA5 /* LaunchScreen.storyboard */; };
 		1C10CED12A7FE3CA00B38BA5 /* TodoList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CED02A7FE3CA00B38BA5 /* TodoList.storyboard */; };
 		1C10CED42A7FE40000B38BA5 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CED32A7FE40000B38BA5 /* TodoListViewController.swift */; };
+		1C10CEDC2A80952200B38BA5 /* DatePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEDB2A80952200B38BA5 /* DatePrinter.swift */; };
+		1C10CEDF2A809BF600B38BA5 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEDE2A809BF600B38BA5 /* Todo.swift */; };
+		1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE02A809C1900B38BA5 /* Completed.swift */; };
+		1C10CEE32A80D39500B38BA5 /* DatePrinterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		1C10CECC2A7E93B800B38BA5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C10CED02A7FE3CA00B38BA5 /* TodoList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TodoList.storyboard; sourceTree = "<group>"; };
 		1C10CED32A7FE40000B38BA5 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		1C10CEDB2A80952200B38BA5 /* DatePrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePrinter.swift; sourceTree = "<group>"; };
+		1C10CEDE2A809BF600B38BA5 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		1C10CEE02A809C1900B38BA5 /* Completed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completed.swift; sourceTree = "<group>"; };
+		1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePrinterTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,8 @@
 		1C10CE872A7E8DDB00B38BA5 /* MyTodo */ = {
 			isa = PBXGroup;
 			children = (
+				1C10CEDD2A809BE400B38BA5 /* Model */,
+				1C10CEDA2A80952200B38BA5 /* Utility */,
 				1C10CEC52A7E917600B38BA5 /* Resource */,
 				1C10CEBD2A7E903100B38BA5 /* Presentation */,
 				1C10CEB82A7E8EAA00B38BA5 /* Application */,
@@ -115,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				1C10CE9F2A7E8DDC00B38BA5 /* MyTodoTests.swift */,
+				1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */,
 			);
 			path = MyTodoTests;
 			sourceTree = "<group>";
@@ -203,6 +214,23 @@
 				1C10CED32A7FE40000B38BA5 /* TodoListViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		1C10CEDA2A80952200B38BA5 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				1C10CEDB2A80952200B38BA5 /* DatePrinter.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		1C10CEDD2A809BE400B38BA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C10CEDE2A809BF600B38BA5 /* Todo.swift */,
+				1C10CEE02A809C1900B38BA5 /* Completed.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,10 +365,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */,
 				1C10CED42A7FE40000B38BA5 /* TodoListViewController.swift in Sources */,
+				1C10CEDF2A809BF600B38BA5 /* Todo.swift in Sources */,
 				1C10CEBB2A7E8F9000B38BA5 /* AppDelegate.swift in Sources */,
 				1C10CEBC2A7E8F9000B38BA5 /* SceneDelegate.swift in Sources */,
 				1C10CEC22A7E915200B38BA5 /* HomeViewController.swift in Sources */,
+				1C10CEDC2A80952200B38BA5 /* DatePrinter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C10CEE32A80D39500B38BA5 /* DatePrinterTest.swift in Sources */,
 				1C10CEA02A7E8DDC00B38BA5 /* MyTodoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

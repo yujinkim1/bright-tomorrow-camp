@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,17 +18,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="해야할 일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAe-Av-jvU">
-                                <rect key="frame" x="164" y="260" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Byx-V0-Bjs">
+                                <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                                <items>
+                                    <barButtonItem title="새로운 할 일" style="plain" id="Ydd-WB-iYh">
+                                        <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="addTodoButton:" destination="Y6W-OH-hqX" id="rgM-fo-NP2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cs8-kH-xkJ">
+                                <rect key="frame" x="20" y="59" width="353" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoCell" id="q3c-cv-Ii6" customClass="TodoCell" customModule="MyTodo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3c-cv-Ii6" id="R5I-gM-9AY">
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Byx-V0-Bjs" firstAttribute="top" secondItem="cs8-kH-xkJ" secondAttribute="bottom" id="8VW-d2-Vr8"/>
+                            <constraint firstItem="Byx-V0-Bjs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Dg6-3C-qk0"/>
+                            <constraint firstItem="Byx-V0-Bjs" firstAttribute="top" secondItem="cs8-kH-xkJ" secondAttribute="bottom" id="S2S-6A-rsL"/>
+                            <constraint firstItem="Byx-V0-Bjs" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ZpW-Pp-HIz"/>
+                            <constraint firstItem="cs8-kH-xkJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="dHP-6w-78P"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="cs8-kH-xkJ" secondAttribute="trailing" constant="20" id="l6j-2W-EFL"/>
+                            <constraint firstItem="cs8-kH-xkJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="lFc-m4-gBd"/>
+                            <constraint firstItem="Byx-V0-Bjs" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="s9R-TW-Snv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="todoListTableView" destination="cs8-kH-xkJ" id="5V1-qT-2Mv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -35,6 +68,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
