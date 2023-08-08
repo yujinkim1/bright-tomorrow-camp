@@ -14,5 +14,5 @@ class DataManager {
 	private init() {}
 	
 	var todoList: [Todo] = []
-	var completedList: [Completed] = []
+	var doneList: [Done] = []
 }
