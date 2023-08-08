@@ -40,8 +40,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setTitle()
-		setTodoTableView()
-		setTestTodo()
+		setTodoListTableView()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -57,37 +56,9 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		title = DatePrinter.currentDate()
 	}
 	
-	private func setTodoTableView() {
+	private func setTodoListTableView() {
 		todoListTableView.delegate = self
 		todoListTableView.dataSource = self
-	}
-	
-	private func setTestTodo() {
-		//		DataManager.shared.todoList.append(Todo(id: 1, content: "스위프트 문법 공부하기", createdTime: DatePrinter.createTime(), isCompleted: false))
-		setEmptyLabel()
-	}
-	
-	private func updateTodoListStatus(at indexPath: IndexPath, isSelected: Bool) {
-		DataManager.shared.todoList[indexPath.row].isCompleted = isSelected
-		
-		if isSelected {
-			let complete = DataManager.shared.todoList.remove(at: indexPath.row)
-			DataManager.shared.completedList.append(Completed(id: complete.id, content: complete.content, dueDate: DatePrinter.currentDate(), isCompleted: true))
-			let doneIndexPath = IndexPath(row: DataManager.shared.completedList.count - 1, section: 0)
-			todoListTableView.beginUpdates()
-			todoListTableView.deleteRows(at: [indexPath], with: .automatic)
-			todoListTableView.insertRows(at: [doneIndexPath], with: .automatic)
-			todoListTableView.endUpdates()
-		}
-		if !isSelected {
-			let undo = DataManager.shared.completedList.remove(at: indexPath.row)
-			DataManager.shared.todoList.append(Todo(id: undo.id, content: undo.content, createdTime: DatePrinter.createTime(), isCompleted: false))
-			let undoIndexPath = IndexPath(row: DataManager.shared.todoList.count - 1, section: 0)
-			todoListTableView.beginUpdates()
-			todoListTableView.deleteRows(at: [indexPath], with: .automatic)
-			todoListTableView.insertRows(at: [undoIndexPath], with: .automatic)
-			todoListTableView.endUpdates()
-		}
 		setEmptyLabel()
 	}
 	
@@ -118,17 +89,14 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		return cell
 	}
 	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		updateTodoListStatus(at: indexPath, isSelected: true)
-		print(DataManager.shared.completedList)
-		print(DataManager.shared.todoList)
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete {
+			DataManager.shared.todoList.remove(at: indexPath.row)
+			todoListTableView.deleteRows(at: [indexPath], with: .fade)
+		}
+		setEmptyLabel()
 	}
-	
 }
-
-//TODO: TodoListTableView 분리할 것
-//class TodoListTableView: UITableViewDelegate, UITableViewDataSource {}
-
 //MARK: TodoList에서 사용하는 셀 라이프 사이클
 class TodoCell: UITableViewCell {
 	
@@ -139,9 +107,23 @@ class TodoCell: UITableViewCell {
 	@IBOutlet weak var contentLabel: UILabel!
 	@IBOutlet weak var createTimeLabel: UILabel!
 	@IBOutlet weak var checkboxButton: UIButton!
-	@IBAction func onTapCheckBoxButton(_ sender: UIButton) {
+	@IBAction func touchInsideCheckBoxButton(_ sender: UIButton) {
+		guard let todoListTableView = superview as? UITableView, let indexPath = todoListTableView.indexPath(for: self) else {
+			return
+		}
+		let todo = DataManager.shared.todoList[indexPath.row]
 		checkboxButton.isSelected.toggle()
-		checkboxButton.setImage(UIImage(systemName: "circle.inset.filled"), for: UIControl.State.selected)
+		if checkboxButton.isSelected {
+			checkboxButton.setImage(UIImage(systemName: "circle.inset.filled"), for: UIControl.State.selected)
+			todoListTableView.beginUpdates()
+			let done = Done(id: todo.id, content: todo.content, dueDate: DatePrinter.currentDate(), isCompleted: true)
+			DataManager.shared.doneList.append(done)
+			DataManager.shared.todoList.remove(at: indexPath.row)
+			todoListTableView.deleteRows(at: [indexPath], with: .automatic)
+			print("할 일: \(DataManager.shared.todoList)")
+			print("완료된 일: \(DataManager.shared.doneList)")
+			todoListTableView.endUpdates()
+		}
 	}
 	
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
