@@ -34,13 +34,53 @@
                                 <rect key="frame" x="20" y="59" width="353" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoCell" id="q3c-cv-Ii6" customClass="TodoCell" customModule="MyTodo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TodoCell" rowHeight="70" id="q3c-cv-Ii6" customClass="TodoCell" customModule="MyTodo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="353" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q3c-cv-Ii6" id="R5I-gM-9AY">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdn-6i-O8u">
+                                                    <rect key="frame" x="14" y="8" width="26" height="32"/>
+                                                    <color key="tintColor" systemColor="systemGrayColor"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="circle" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="onTapCheckBoxButton:" destination="q3c-cv-Ii6" eventType="touchUpInside" id="pnO-3o-TVx"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DON-c7-vzh">
+                                                    <rect key="frame" x="45" y="13" width="31.333333333333329" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="생성 시간" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-ps-aOl">
+                                                    <rect key="frame" x="44" y="45" width="52.333333333333343" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="zdn-6i-O8u" secondAttribute="bottom" constant="30" id="0cX-zU-gv3"/>
+                                                <constraint firstItem="zdn-6i-O8u" firstAttribute="leading" secondItem="R5I-gM-9AY" secondAttribute="leading" constant="14" id="9Wm-Js-caD"/>
+                                                <constraint firstItem="DON-c7-vzh" firstAttribute="leading" secondItem="zdn-6i-O8u" secondAttribute="trailing" constant="5" id="IJL-cp-eti"/>
+                                                <constraint firstItem="KKI-ps-aOl" firstAttribute="top" secondItem="DON-c7-vzh" secondAttribute="bottom" constant="10" id="NqS-tY-u2B"/>
+                                                <constraint firstItem="DON-c7-vzh" firstAttribute="top" secondItem="R5I-gM-9AY" secondAttribute="topMargin" constant="2" id="YJK-l6-PFV"/>
+                                                <constraint firstItem="zdn-6i-O8u" firstAttribute="top" secondItem="R5I-gM-9AY" secondAttribute="top" constant="8" id="ate-zM-G0h"/>
+                                                <constraint firstItem="KKI-ps-aOl" firstAttribute="leading" secondItem="R5I-gM-9AY" secondAttribute="leading" constant="44" id="saA-aI-FUl"/>
+                                                <constraint firstAttribute="bottom" secondItem="KKI-ps-aOl" secondAttribute="bottom" constant="8" id="vuI-Jr-ISv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkboxButton" destination="zdn-6i-O8u" id="4mg-vB-1o8"/>
+                                            <outlet property="contentLabel" destination="DON-c7-vzh" id="T8c-BZ-Szb"/>
+                                            <outlet property="createTimeLabel" destination="KKI-ps-aOl" id="qDq-ga-yRx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -68,9 +108,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle" catalog="system" width="128" height="123"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
