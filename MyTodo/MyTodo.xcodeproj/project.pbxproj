@@ -24,6 +24,7 @@
 		1C10CEE32A80D39500B38BA5 /* DatePrinterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */; };
 		1C10CEE62A81D8EA00B38BA5 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE52A81D8EA00B38BA5 /* .gitkeep */; };
 		1C10CEE92A81D94200B38BA5 /* DoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */; };
+		1C10CEED2A81D98D00B38BA5 /* DoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEEC2A81D98D00B38BA5 /* DoneListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePrinterTest.swift; sourceTree = "<group>"; };
 		1C10CEE52A81D8EA00B38BA5 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DoneList.storyboard; sourceTree = "<group>"; };
+		1C10CEEC2A81D98D00B38BA5 /* DoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 		1C10CEE42A81D8BB00B38BA5 /* DoneList */ = {
 			isa = PBXGroup;
 			children = (
+				1C10CEEA2A81D96200B38BA5 /* ViewController */,
 				1C10CEE72A81D92E00B38BA5 /* StoryBoard */,
 				1C10CEE52A81D8EA00B38BA5 /* .gitkeep */,
 			);
@@ -253,6 +256,14 @@
 				1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		1C10CEEA2A81D96200B38BA5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1C10CEEC2A81D98D00B38BA5 /* DoneListViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C10CEED2A81D98D00B38BA5 /* DoneListViewController.swift in Sources */,
 				1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */,
 				1C10CED42A7FE40000B38BA5 /* TodoListViewController.swift in Sources */,
 				1C10CEDF2A809BF600B38BA5 /* Todo.swift in Sources */,
