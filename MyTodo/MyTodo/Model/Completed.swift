@@ -8,8 +8,17 @@
 import Foundation
 
 struct Completed {
+	
 	let id: Int
 	var content: String
 	let dueDate: String
 	var isCompleted: Bool
+	
+	init(id: Int, content: String, dueDate: String, isCompleted: Bool) {
+		self.id = id
+		self.content = content
+		self.dueDate = dueDate
+		self.isCompleted = isCompleted
+	}
+	
 }
