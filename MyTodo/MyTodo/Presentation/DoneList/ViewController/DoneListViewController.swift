@@ -13,11 +13,11 @@ class DoneListViewController: UIViewController, UITableViewDataSource, UITableVi
 	@IBOutlet weak var doneListTableView: UITableView!
 	
 	//MARK: UI View 라이프 사이클
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		title = "완료됨"
 		setDoneListTableView()
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
