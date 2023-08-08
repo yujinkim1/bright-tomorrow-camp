@@ -22,6 +22,7 @@
 		1C10CEDF2A809BF600B38BA5 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEDE2A809BF600B38BA5 /* Todo.swift */; };
 		1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE02A809C1900B38BA5 /* Completed.swift */; };
 		1C10CEE32A80D39500B38BA5 /* DatePrinterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */; };
+		1C10CEE62A81D8EA00B38BA5 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE52A81D8EA00B38BA5 /* .gitkeep */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1C10CEDE2A809BF600B38BA5 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		1C10CEE02A809C1900B38BA5 /* Completed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completed.swift; sourceTree = "<group>"; };
 		1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePrinterTest.swift; sourceTree = "<group>"; };
+		1C10CEE52A81D8EA00B38BA5 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 		1C10CEBD2A7E903100B38BA5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1C10CEE42A81D8BB00B38BA5 /* DoneList */,
 				1C10CECE2A7FE36700B38BA5 /* TodoList */,
 				1C10CEBE2A7E904000B38BA5 /* Home */,
 			);
@@ -231,6 +234,14 @@
 				1C10CEE02A809C1900B38BA5 /* Completed.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1C10CEE42A81D8BB00B38BA5 /* DoneList */ = {
+			isa = PBXGroup;
+			children = (
+				1C10CEE52A81D8EA00B38BA5 /* .gitkeep */,
+			);
+			path = DoneList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +350,7 @@
 			files = (
 				1C10CED12A7FE3CA00B38BA5 /* TodoList.storyboard in Resources */,
 				1C10CECD2A7E93B800B38BA5 /* LaunchScreen.storyboard in Resources */,
+				1C10CEE62A81D8EA00B38BA5 /* .gitkeep in Resources */,
 				1C10CEC72A7E922D00B38BA5 /* Assets.xcassets in Resources */,
 				1C10CEC42A7E916000B38BA5 /* Home.storyboard in Resources */,
 			);
