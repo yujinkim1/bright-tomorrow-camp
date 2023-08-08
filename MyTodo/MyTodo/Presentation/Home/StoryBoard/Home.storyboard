@@ -45,6 +45,9 @@
                                     <fontDescription key="subtitleFontDescription" type="system" pointSize="16"/>
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="e4Y-fc-GXM" kind="show" id="oM4-cz-Uv4"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -73,7 +76,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XsO-mZ-LJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574.0458015267175" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="1513" y="-293"/>
+        </scene>
+        <!--DoneList-->
+        <scene sceneID="c77-1a-ZWV">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="DoneList" storyboardName="DoneList" referencedIdentifier="DoneList" id="e4Y-fc-GXM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="haX-IY-HIY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dlv-lN-wiU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1515" y="289"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UKj-oT-gz5">
