@@ -23,6 +23,7 @@
 		1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE02A809C1900B38BA5 /* Completed.swift */; };
 		1C10CEE32A80D39500B38BA5 /* DatePrinterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */; };
 		1C10CEE62A81D8EA00B38BA5 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE52A81D8EA00B38BA5 /* .gitkeep */; };
+		1C10CEE92A81D94200B38BA5 /* DoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		1C10CEE02A809C1900B38BA5 /* Completed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completed.swift; sourceTree = "<group>"; };
 		1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePrinterTest.swift; sourceTree = "<group>"; };
 		1C10CEE52A81D8EA00B38BA5 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DoneList.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,9 +241,18 @@
 		1C10CEE42A81D8BB00B38BA5 /* DoneList */ = {
 			isa = PBXGroup;
 			children = (
+				1C10CEE72A81D92E00B38BA5 /* StoryBoard */,
 				1C10CEE52A81D8EA00B38BA5 /* .gitkeep */,
 			);
 			path = DoneList;
+			sourceTree = "<group>";
+		};
+		1C10CEE72A81D92E00B38BA5 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */,
+			);
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +363,7 @@
 				1C10CECD2A7E93B800B38BA5 /* LaunchScreen.storyboard in Resources */,
 				1C10CEE62A81D8EA00B38BA5 /* .gitkeep in Resources */,
 				1C10CEC72A7E922D00B38BA5 /* Assets.xcassets in Resources */,
+				1C10CEE92A81D94200B38BA5 /* DoneList.storyboard in Resources */,
 				1C10CEC42A7E916000B38BA5 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
