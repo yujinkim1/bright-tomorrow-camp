@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,19 +12,72 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="DoneList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="DoneListViewController" customModule="MyTodo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8eX-a8-nbp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DoneCell" rowHeight="70" id="ORP-Im-Hxo" customClass="DoneCell" customModule="MyTodo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ORP-Im-Hxo" id="vwI-Lp-OHM">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fz-7i-ho3">
+                                            <rect key="frame" x="14" y="26" width="15.666666666666664" height="18"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="circle.fill" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onTapCheckBoxButton:" destination="ORP-Im-Hxo" eventType="touchUpInside" id="8Jc-IB-coh"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qz-GO-EE8">
+                                            <rect key="frame" x="41.666666666666664" y="13" width="31.333333333333336" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완료 시간" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsf-SL-2X5">
+                                            <rect key="frame" x="44" y="45" width="53" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6qz-GO-EE8" firstAttribute="top" secondItem="vwI-Lp-OHM" secondAttribute="topMargin" constant="2" id="Bkf-5K-TTj"/>
+                                        <constraint firstItem="1Fz-7i-ho3" firstAttribute="leading" secondItem="vwI-Lp-OHM" secondAttribute="leading" constant="14" id="F5S-ha-3i1"/>
+                                        <constraint firstItem="6qz-GO-EE8" firstAttribute="leading" secondItem="1Fz-7i-ho3" secondAttribute="trailing" constant="12" id="Nbs-fp-zKZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="lsf-SL-2X5" secondAttribute="bottom" constant="8" id="R3f-qe-WsH"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Fz-7i-ho3" secondAttribute="bottom" constant="26" id="X92-H2-Lzx"/>
+                                        <constraint firstItem="1Fz-7i-ho3" firstAttribute="top" secondItem="vwI-Lp-OHM" secondAttribute="top" constant="26" id="fU2-ZV-aNw"/>
+                                        <constraint firstItem="lsf-SL-2X5" firstAttribute="leading" secondItem="vwI-Lp-OHM" secondAttribute="leading" constant="44" id="nZ6-zK-IVf"/>
+                                        <constraint firstItem="lsf-SL-2X5" firstAttribute="top" secondItem="6qz-GO-EE8" secondAttribute="bottom" constant="10" id="s9l-hd-nFn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="contentLabel" destination="6qz-GO-EE8" id="mmj-aO-Xai"/>
+                                    <outlet property="dueDateLabel" destination="lsf-SL-2X5" id="wOk-zl-GAr"/>
+                                    <outlet property="fixedCircleImageView" destination="1Fz-7i-ho3" id="iMS-w3-HKi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <connections>
+                        <outlet property="doneListTableView" destination="8eX-a8-nbp" id="9T2-Vv-e4o"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11" y="-34"/>
+            <point key="canvasLocation" x="9.9236641221374047" y="-34.507042253521128"/>
         </scene>
     </scenes>
     <resources>
+        <image name="circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -20,7 +20,7 @@
 		1C10CED42A7FE40000B38BA5 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CED32A7FE40000B38BA5 /* TodoListViewController.swift */; };
 		1C10CEDC2A80952200B38BA5 /* DatePrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEDB2A80952200B38BA5 /* DatePrinter.swift */; };
 		1C10CEDF2A809BF600B38BA5 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEDE2A809BF600B38BA5 /* Todo.swift */; };
-		1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE02A809C1900B38BA5 /* Completed.swift */; };
+		1C10CEE12A809C1900B38BA5 /* Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE02A809C1900B38BA5 /* Done.swift */; };
 		1C10CEE32A80D39500B38BA5 /* DatePrinterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */; };
 		1C10CEE62A81D8EA00B38BA5 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE52A81D8EA00B38BA5 /* .gitkeep */; };
 		1C10CEE92A81D94200B38BA5 /* DoneList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */; };
@@ -63,7 +63,7 @@
 		1C10CED32A7FE40000B38BA5 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		1C10CEDB2A80952200B38BA5 /* DatePrinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePrinter.swift; sourceTree = "<group>"; };
 		1C10CEDE2A809BF600B38BA5 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
-		1C10CEE02A809C1900B38BA5 /* Completed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completed.swift; sourceTree = "<group>"; };
+		1C10CEE02A809C1900B38BA5 /* Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Done.swift; sourceTree = "<group>"; };
 		1C10CEE22A80D39500B38BA5 /* DatePrinterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePrinterTest.swift; sourceTree = "<group>"; };
 		1C10CEE52A81D8EA00B38BA5 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DoneList.storyboard; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				1C10CEDE2A809BF600B38BA5 /* Todo.swift */,
-				1C10CEE02A809C1900B38BA5 /* Completed.swift */,
+				1C10CEE02A809C1900B38BA5 /* Done.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C10CEED2A81D98D00B38BA5 /* DoneListViewController.swift in Sources */,
-				1C10CEE12A809C1900B38BA5 /* Completed.swift in Sources */,
+				1C10CEE12A809C1900B38BA5 /* Done.swift in Sources */,
 				1C10CED42A7FE40000B38BA5 /* TodoListViewController.swift in Sources */,
 				1C10CEDF2A809BF600B38BA5 /* Todo.swift in Sources */,
 				1C10CEBB2A7E8F9000B38BA5 /* AppDelegate.swift in Sources */,
