@@ -9,9 +9,7 @@ import UIKit
 
 class TodoListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
-	private var todoList: [Todo] = []
-	private var completeList: [Completed] = []
-	
+	//MARK: Interface Builder 아웃렛과 액션
 	@IBOutlet weak var todoListTableView: UITableView!
 	@IBAction func addTodoButton(_ sender: UIBarButtonItem) {
 		let alretController = UIAlertController(title: "추가하기", message: nil, preferredStyle: .alert)
@@ -21,11 +19,14 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		
 		let add = UIAlertAction(title: "추가", style: .default) { _ in
 			if let textField = alretController.textFields?.first, let content = textField.text {
-				self.todoList.append(Todo(id: self.todoList.count + 1, content: content, createdTime: DatePrinter.createTime(), isCompleted: false))
-				let indexPath = IndexPath(row: self.todoList.count - 1, section: 0)
+				
+				let todo = Todo(id: DataManager.shared.todoList.count + 1, content: content, createdTime: DatePrinter.createTime(), isCompleted: false)
+				DataManager.shared.todoList.append(todo)
+				let indexPath = IndexPath(row: DataManager.shared.todoList.count - 1, section: 0)
 				self.todoListTableView.beginUpdates()
 				self.todoListTableView.insertRows(at: [indexPath], with: .automatic)
 				self.todoListTableView.endUpdates()
+				self.setEmptyLabel()
 			}
 		}
 		let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -35,6 +36,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		present(alretController, animated: true, completion: nil)
 	}
 	
+	//MARK: UI View 라이프 사이클
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setTitle()
@@ -50,6 +52,7 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		super.viewWillDisappear(animated)
 	}
 	
+	//MARK: UI Control 메소드
 	private func setTitle() {
 		title = DatePrinter.currentDate()
 	}
@@ -60,36 +63,65 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 	}
 	
 	private func setTestTodo() {
-		self.todoList = [
-			Todo(
-				id: 1,
-				content: "스위프트 문법 공부하기",
-				createdTime: DatePrinter.createTime(),
-				isCompleted: false
-			)
-		]
-		todoListTableView.reloadData()
+		//		DataManager.shared.todoList.append(Todo(id: 1, content: "스위프트 문법 공부하기", createdTime: DatePrinter.createTime(), isCompleted: false))
+		setEmptyLabel()
 	}
 	
-	private func updateTodoCompletionStatus(at indexPath: IndexPath, isSelected: Bool) {
-		todoList[indexPath.row].isCompleted = isSelected
-		todoListTableView.reloadRows(at: [indexPath], with: .automatic)
+	private func updateTodoListStatus(at indexPath: IndexPath, isSelected: Bool) {
+		DataManager.shared.todoList[indexPath.row].isCompleted = isSelected
+		
+		if isSelected {
+			let complete = DataManager.shared.todoList.remove(at: indexPath.row)
+			DataManager.shared.completedList.append(Completed(id: complete.id, content: complete.content, dueDate: DatePrinter.currentDate(), isCompleted: true))
+			let doneIndexPath = IndexPath(row: DataManager.shared.completedList.count - 1, section: 0)
+			todoListTableView.beginUpdates()
+			todoListTableView.deleteRows(at: [indexPath], with: .automatic)
+			todoListTableView.insertRows(at: [doneIndexPath], with: .automatic)
+			todoListTableView.endUpdates()
+		}
+		if !isSelected {
+			let undo = DataManager.shared.completedList.remove(at: indexPath.row)
+			DataManager.shared.todoList.append(Todo(id: undo.id, content: undo.content, createdTime: DatePrinter.createTime(), isCompleted: false))
+			let undoIndexPath = IndexPath(row: DataManager.shared.todoList.count - 1, section: 0)
+			todoListTableView.beginUpdates()
+			todoListTableView.deleteRows(at: [indexPath], with: .automatic)
+			todoListTableView.insertRows(at: [undoIndexPath], with: .automatic)
+			todoListTableView.endUpdates()
+		}
+		setEmptyLabel()
 	}
 	
+	private func setEmptyLabel() {
+		let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+		emptyLabel.text = "모든 해야할 일이 완료됨"
+		emptyLabel.textAlignment = .center
+		emptyLabel.textColor = .systemGray
+		if DataManager.shared.todoList.isEmpty {
+			todoListTableView.backgroundView = emptyLabel
+			todoListTableView.separatorStyle = .none
+		}
+		if !DataManager.shared.todoList.isEmpty {
+			todoListTableView.backgroundView = nil
+			todoListTableView.separatorStyle = .singleLine
+		}
+	}
+	
+	//MARK: UI Table View 데이터와 델리게이트
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return todoList.count
+		return DataManager.shared.todoList.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodoCell
-		let todo = todoList[indexPath.row]
+		let todo = DataManager.shared.todoList[indexPath.row]
 		cell.configure(with: todo)
 		return cell
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		var selected = todoList[indexPath.row]
-		selected.isCompleted.toggle()
+		updateTodoListStatus(at: indexPath, isSelected: true)
+		print(DataManager.shared.completedList)
+		print(DataManager.shared.todoList)
 	}
 	
 }
@@ -102,6 +134,8 @@ class TodoCell: UITableViewCell {
 	
 	static let reuseIdenifier = "TodoCell"
 	private var checkboxImage: UIImage!
+	
+	//MARK: Interface Builder 아웃렛과 액션
 	@IBOutlet weak var contentLabel: UILabel!
 	@IBOutlet weak var createTimeLabel: UILabel!
 	@IBOutlet weak var checkboxButton: UIButton!
