@@ -69,6 +69,7 @@
 		1C10CEE82A81D94200B38BA5 /* DoneList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DoneList.storyboard; sourceTree = "<group>"; };
 		1C10CEEC2A81D98D00B38BA5 /* DoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneListViewController.swift; sourceTree = "<group>"; };
 		1C10CEEE2A81E0F100B38BA5 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1C4C70392A8340F5002A55DB /* MyTodo.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyTodo.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 		1C10CE7C2A7E8DDB00B38BA5 = {
 			isa = PBXGroup;
 			children = (
+				1C4C70392A8340F5002A55DB /* MyTodo.xctestplan */,
 				1C10CE872A7E8DDB00B38BA5 /* MyTodo */,
 				1C10CE9E2A7E8DDC00B38BA5 /* MyTodoTests */,
 				1C10CEA82A7E8DDC00B38BA5 /* MyTodoUITests */,

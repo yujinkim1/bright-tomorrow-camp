@@ -1,0 +1,51 @@
+{
+  "configurations" : [
+    {
+      "id" : "1FEB11B1-9551-47A5-9999-FF290F093B52",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:MyTodo.xcodeproj",
+          "identifier" : "1C10CE842A7E8DDB00B38BA5",
+          "name" : "MyTodo"
+        },
+        {
+          "containerPath" : "container:MyTodo.xcodeproj",
+          "identifier" : "1C10CE9A2A7E8DDC00B38BA5",
+          "name" : "MyTodoTests"
+        }
+      ]
+    },
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:MyTodo.xcodeproj",
+      "identifier" : "1C10CE842A7E8DDB00B38BA5",
+      "name" : "MyTodo"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MyTodo.xcodeproj",
+        "identifier" : "1C10CE9A2A7E8DDC00B38BA5",
+        "name" : "MyTodoTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:MyTodo.xcodeproj",
+        "identifier" : "1C10CEA42A7E8DDC00B38BA5",
+        "name" : "MyTodoUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
