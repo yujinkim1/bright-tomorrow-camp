@@ -25,18 +25,18 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Fz-7i-ho3">
-                                            <rect key="frame" x="14" y="26" width="15.666666666666664" height="18"/>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="14.000000000000002" y="8" width="25.666666666666671" height="30"/>
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="circle.fill" catalog="system">
-                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                            <state key="normal" image="circle.inset.filled" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                             </state>
                                             <connections>
-                                                <action selector="onTapCheckBoxButton:" destination="ORP-Im-Hxo" eventType="touchUpInside" id="8Jc-IB-coh"/>
+                                                <action selector="touchUpCheckboxButton:" destination="ORP-Im-Hxo" eventType="touchUpInside" id="gp3-IL-mHP"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qz-GO-EE8">
-                                            <rect key="frame" x="41.666666666666664" y="13" width="31.333333333333336" height="22"/>
+                                            <rect key="frame" x="44.666666666666664" y="13" width="31.333333333333336" height="22"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -51,18 +51,18 @@
                                     <constraints>
                                         <constraint firstItem="6qz-GO-EE8" firstAttribute="top" secondItem="vwI-Lp-OHM" secondAttribute="topMargin" constant="2" id="Bkf-5K-TTj"/>
                                         <constraint firstItem="1Fz-7i-ho3" firstAttribute="leading" secondItem="vwI-Lp-OHM" secondAttribute="leading" constant="14" id="F5S-ha-3i1"/>
-                                        <constraint firstItem="6qz-GO-EE8" firstAttribute="leading" secondItem="1Fz-7i-ho3" secondAttribute="trailing" constant="12" id="Nbs-fp-zKZ"/>
+                                        <constraint firstItem="6qz-GO-EE8" firstAttribute="leading" secondItem="1Fz-7i-ho3" secondAttribute="trailing" constant="5" id="Nbs-fp-zKZ"/>
                                         <constraint firstAttribute="bottom" secondItem="lsf-SL-2X5" secondAttribute="bottom" constant="8" id="R3f-qe-WsH"/>
-                                        <constraint firstAttribute="bottom" secondItem="1Fz-7i-ho3" secondAttribute="bottom" constant="26" id="X92-H2-Lzx"/>
-                                        <constraint firstItem="1Fz-7i-ho3" firstAttribute="top" secondItem="vwI-Lp-OHM" secondAttribute="top" constant="26" id="fU2-ZV-aNw"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Fz-7i-ho3" secondAttribute="bottom" constant="32" id="X92-H2-Lzx"/>
+                                        <constraint firstItem="1Fz-7i-ho3" firstAttribute="top" secondItem="vwI-Lp-OHM" secondAttribute="top" constant="8" id="fU2-ZV-aNw"/>
                                         <constraint firstItem="lsf-SL-2X5" firstAttribute="leading" secondItem="vwI-Lp-OHM" secondAttribute="leading" constant="44" id="nZ6-zK-IVf"/>
                                         <constraint firstItem="lsf-SL-2X5" firstAttribute="top" secondItem="6qz-GO-EE8" secondAttribute="bottom" constant="10" id="s9l-hd-nFn"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkboxButton" destination="1Fz-7i-ho3" id="iMS-w3-HKi"/>
                                     <outlet property="contentLabel" destination="6qz-GO-EE8" id="mmj-aO-Xai"/>
                                     <outlet property="dueDateLabel" destination="lsf-SL-2X5" id="wOk-zl-GAr"/>
-                                    <outlet property="fixedCircleImageView" destination="1Fz-7i-ho3" id="iMS-w3-HKi"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -77,7 +77,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="circle.fill" catalog="system" width="128" height="123"/>
+        <image name="circle.inset.filled" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

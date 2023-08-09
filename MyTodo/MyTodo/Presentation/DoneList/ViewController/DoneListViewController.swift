@@ -27,11 +27,30 @@ class DoneListViewController: UIViewController, UITableViewDataSource, UITableVi
 		super.viewWillDisappear(animated)
 	}
 	
+	//MARK: UI Control 메소드
 	private func setDoneListTableView() {
 		doneListTableView.dataSource = self
 		doneListTableView.delegate = self
+		setEmptyLabel()
 	}
 	
+	private func setEmptyLabel() {
+		let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+		emptyLabel.font = UIFont.systemFont(ofSize: 20.0)
+		emptyLabel.text = "비어있음"
+		emptyLabel.textAlignment = .center
+		emptyLabel.textColor = .systemGray
+		if DataManager.shared.doneList.isEmpty {
+			doneListTableView.backgroundView = emptyLabel
+			doneListTableView.separatorStyle = .none
+		}
+		if !DataManager.shared.doneList.isEmpty {
+			doneListTableView.backgroundView = nil
+			doneListTableView.separatorStyle = .singleLine
+		}
+	}
+	
+	//MARK: UI Table View 데이터와 델리게이트
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return DataManager.shared.doneList.count
 	}
@@ -56,7 +75,25 @@ class DoneCell: UITableViewCell {
 	
 	static let reuseIdentifier = "DoneCell"
 	
-	@IBOutlet weak var fixedCircleImageView: UIButton!
+	@IBOutlet weak var checkboxButton: UIButton!
+	@IBAction func touchUpCheckboxButton(_ sender: UIButton) {
+		guard let doneListTableView = superview as? UITableView, let indexPath = doneListTableView.indexPath(for: self) else {
+			return
+		}
+		let done = DataManager.shared.doneList[indexPath.row]
+		checkboxButton.isSelected.toggle()
+		if checkboxButton.isSelected {
+			checkboxButton.setImage(UIImage(systemName: "circle"), for: UIControl.State.selected)
+			doneListTableView.beginUpdates()
+			let todo = Todo(id: done.id, content: done.content, createdTime: DatePrinter.createTime(), isCompleted: false)
+			DataManager.shared.todoList.insert(todo, at: todo.id)
+			DataManager.shared.doneList.remove(at: indexPath.row)
+			doneListTableView.deleteRows(at: [indexPath], with: .automatic)
+			print("할 일: \(DataManager.shared.todoList)")
+			print("완료된 일: \(DataManager.shared.doneList)")
+			doneListTableView.endUpdates()
+		}
+	}
 	@IBOutlet weak var contentLabel: UILabel!
 	@IBOutlet weak var dueDateLabel: UILabel!
 	
