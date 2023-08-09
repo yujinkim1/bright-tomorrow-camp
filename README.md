@@ -46,9 +46,8 @@
 ### MyTodo
 
 <p align="center">
-	<img src=".github/resources/MyTodo_Snapshot_1.png" height="640px" width="290px" />
-	<img src=".github/resources/MyTodo_Snapshot_2.png" height="640px" width="290px" />
-	<img src=".github/resources/MyTodo.gif" height="640px" width="290px" />
+	<img src=".github/resources/MyTodo_Snapshot_1.png" height="640px" />
+	<img src=".github/resources/MyTodo.gif" height="640px" />
 </p>
 
 - 스토리보드와 인터페이스 빌더를 사용해 기본 UI View 구성
