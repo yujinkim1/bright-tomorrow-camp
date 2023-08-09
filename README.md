@@ -93,25 +93,6 @@
   │       ├── DataManager.swift
   │       └── DatePrinter.swift
   ├── MyTodo.xcodeproj
-  │   ├── project.pbxproj
-  │   ├── project.xcworkspace
-  │   │   ├── contents.xcworkspacedata
-  │   │   ├── xcshareddata
-  │   │   │   ├── IDEWorkspaceChecks.plist
-  │   │   │   └── swiftpm
-  │   │   │       └── configuration
-  │   │   └── xcuserdata
-  │   │       └── yujinkim.xcuserdatad
-  │   │           └── UserInterfaceState.xcuserstate
-  │   ├── xcshareddata
-  │   │   └── xcschemes
-  │   │       └── MyTodo.xcscheme
-  │   └── xcuserdata
-  │       └── yujinkim.xcuserdatad
-  │           ├── xcdebugger
-  │           │   └── Breakpoints_v2.xcbkptlist
-  │           └── xcschemes
-  │               └── xcschememanagement.plist
   ├── MyTodo.xctestplan
   ├── MyTodoTests
   │   ├── DatePrinterTest.swift
