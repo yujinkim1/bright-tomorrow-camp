@@ -86,7 +86,7 @@ class DoneCell: UITableViewCell {
 			checkboxButton.setImage(UIImage(systemName: "circle"), for: UIControl.State.selected)
 			doneListTableView.beginUpdates()
 			let todo = Todo(id: done.id, content: done.content, createdTime: DatePrinter.createTime(), isCompleted: false)
-			DataManager.shared.todoList.insert(todo, at: todo.id)
+			DataManager.shared.todoList.append(todo)
 			DataManager.shared.doneList.remove(at: indexPath.row)
 			doneListTableView.deleteRows(at: [indexPath], with: .automatic)
 			print("할 일: \(DataManager.shared.todoList)")
