@@ -77,9 +77,7 @@ class DoneCell: UITableViewCell {
 	
 	@IBOutlet weak var checkboxButton: UIButton!
 	@IBAction func touchUpCheckboxButton(_ sender: UIButton) {
-		guard let doneListTableView = superview as? UITableView, let indexPath = doneListTableView.indexPath(for: self) else {
-			return
-		}
+		guard let doneListTableView = superview as? UITableView, let indexPath = doneListTableView.indexPath(for: self) else { return }
 		let done = DataManager.shared.doneList[indexPath.row]
 		checkboxButton.isSelected.toggle()
 		if checkboxButton.isSelected {
