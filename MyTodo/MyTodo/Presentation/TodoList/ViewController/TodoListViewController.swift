@@ -16,10 +16,8 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		alretController.addTextField { textField in
 			textField.placeholder = "내용 입력하기"
 		}
-		
 		let add = UIAlertAction(title: "추가", style: .default) { _ in
 			if let textField = alretController.textFields?.first, let content = textField.text {
-				
 				let todo = Todo(id: DataManager.shared.todoList.count + 1, content: content, createdTime: DatePrinter.createTime(), isCompleted: false)
 				DataManager.shared.todoList.append(todo)
 				let indexPath = IndexPath(row: DataManager.shared.todoList.count - 1, section: 0)
@@ -32,7 +30,6 @@ class TodoListViewController: UIViewController, UITableViewDelegate, UITableView
 		let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
 		alretController.addAction(add)
 		alretController.addAction(cancel)
-		
 		present(alretController, animated: true, completion: nil)
 	}
 	
@@ -108,9 +105,7 @@ class TodoCell: UITableViewCell {
 	@IBOutlet weak var createTimeLabel: UILabel!
 	@IBOutlet weak var checkboxButton: UIButton!
 	@IBAction func touchInsideCheckBoxButton(_ sender: UIButton) {
-		guard let todoListTableView = superview as? UITableView, let indexPath = todoListTableView.indexPath(for: self) else {
-			return
-		}
+		guard let todoListTableView = superview as? UITableView, let indexPath = todoListTableView.indexPath(for: self) else { return }
 		let todo = DataManager.shared.todoList[indexPath.row]
 		checkboxButton.isSelected.toggle()
 		if checkboxButton.isSelected {
@@ -145,5 +140,4 @@ class TodoCell: UITableViewCell {
 		contentLabel.text = todo.content
 		createTimeLabel.text = todo.createdTime
 	}
-	
 }
