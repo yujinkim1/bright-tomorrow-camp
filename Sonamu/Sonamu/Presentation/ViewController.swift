@@ -8,12 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+		
+		if #available(iOS 15.0, *) {
+			view.backgroundColor = .systemMint
+		} else {
+			view.backgroundColor = .systemIndigo
+		}
 	}
-
-
+	
 }
 
