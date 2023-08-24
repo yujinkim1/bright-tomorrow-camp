@@ -8,8 +8,8 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-	
 	var window: UIWindow?
+	var coordinator: Coordinator?
 	
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -17,12 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let windowScene = (scene as? UIWindowScene) else { return }
 		window = UIWindow(windowScene: windowScene)
-		window?.rootViewController = ViewController()
+		
+		let navigationContoroller = UINavigationController()
+		navigationContoroller.navigationBar.isHidden = true
+		coordinator = HomeViewCoordinatorImpl(navigationController: navigationContoroller)
+		coordinator?.start()
+		window?.rootViewController = navigationContoroller
 		window?.makeKeyAndVisible()
-		//		let appWindow = UIWindow(frame: windowScene.coordinateSpace.bounds)
-		//		appWindow.windowScene = windowScene
-		//		appWindow.rootViewController = ViewController()
-		//		appWindow.makeKeyAndVisible()
 	}
 	
 	func sceneDidDisconnect(_ scene: UIScene) {
@@ -52,6 +53,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Use this method to save data, release shared resources, and store enough scene-specific state information
 		// to restore the scene back to its current state.
 	}
-	
 }
-
