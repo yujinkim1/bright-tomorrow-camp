@@ -7,11 +7,26 @@
 
 import Foundation
 
-//TODO: - 데이터 흐름 수립 후 구현 필요
-class HomeViewModel: NSObject {
-	//MARK: - 데이터
+class HomeViewModel {
+	var decodedTodoGroup: [Todo] = []
+	var decodedDoneGroup: [Done] = []
 	
-	//MARK: - 데이터가 비어있을 경우
+	func setEmptyLiteral() -> String {
+		if let data = UserDefaults.standard.data(forKey: "TodoGroup"), !data.isEmpty {
+			return ""
+		} else {
+			return "모든 해야할 일이 완료되었습니다."
+		}
+	}
 	
-	//MARK: - 데이터가 비어있지 않고 하나라도 있을 경우
+	func loadTodoGroup() -> [Todo] {
+		guard let data = UserDefaults.standard.data(forKey: "TodoGroup") else { return decodedTodoGroup }
+		do {
+			decodedTodoGroup = try JSONDecoder().decode([Todo].self, from: data)
+			return decodedTodoGroup
+		} catch {
+			print("TodoGroup 데이터 디코딩 에러: \(error)")
+		}
+		return decodedTodoGroup
+	}
 }
