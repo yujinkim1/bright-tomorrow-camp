@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		window = UIWindow(windowScene: windowScene)
 		
 		let navigationContoroller = UINavigationController()
-		navigationContoroller.navigationBar.isHidden = true
+		navigationContoroller.navigationBar.prefersLargeTitles = true
 		coordinator = HomeViewCoordinatorImpl(navigationController: navigationContoroller)
 		coordinator?.start()
 		window?.rootViewController = navigationContoroller

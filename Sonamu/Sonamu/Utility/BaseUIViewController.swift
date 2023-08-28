@@ -13,6 +13,7 @@ class BaseUIViewController: UIViewController {
 		super.viewDidLoad()
 		view.backgroundColor = ColorManager.kBackgroundColor
 		hideKeyboardWhenTappedAround()
+		setTitle()
 		setUI()
 		setLayout()
 		addTarget()
@@ -28,11 +29,11 @@ class BaseUIViewController: UIViewController {
 	}
 	
 	//MARK: - Custom Method
+	func setTitle() {}
+	
 	func setUI() {}
 	
 	func setLayout() {}
-	
-	func setTitle() {}
 	
 	func addTarget() {}
 	
