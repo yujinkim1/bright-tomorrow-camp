@@ -100,9 +100,7 @@ class HomeViewController: BaseUIViewController {
 	}
 	
 	override func addTarget() {
-		createTodoButton.addTarget(self,
-								   action: #selector(createTodoButtonTapped(_:)),
-								   for: .touchUpInside)
+		createTodoButton.addTarget(self, action: #selector(createTodoButtonTapped(_:)), for: .touchUpInside)
 	}
 	
 	//MARK: - Custom Action
@@ -120,8 +118,6 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath) as! TodoCell
-		//		let todo = viewModel.decodedTodoGroup[indexPath.row]
-		//		cell.configure(with: todo)
 		return cell
 	}
 }
