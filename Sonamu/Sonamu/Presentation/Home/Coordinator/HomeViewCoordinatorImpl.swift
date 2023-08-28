@@ -16,12 +16,15 @@ class HomeViewCoordinatorImpl: Coordinator {
 	
 	func start() {
 		let viewController = HomeViewController()
+		viewController.viewModel = HomeViewModel()
 		viewController.coordinator = self
 		navigationController.pushViewController(viewController, animated: false)
 	}
 	
-	func showCreateViewController() {
-		let viewController = CreateViewController()
-		navigationController.pushViewController(viewController, animated: true)
+	func toCreateTodoViewController() {
+		let viewController = CreateTodoViewController()
+		viewController.viewModel = CreateTodoViewModel()
+		viewController.modalPresentationStyle = .fullScreen
+		navigationController.present(viewController, animated: true)
 	}
 }
