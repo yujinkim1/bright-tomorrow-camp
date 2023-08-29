@@ -21,10 +21,13 @@ class HomeViewCoordinatorImpl: Coordinator {
 		navigationController.pushViewController(viewController, animated: false)
 	}
 	
-	func toCreateTodoViewController() {
-		let viewController = CreateTodoViewController()
-		viewController.viewModel = CreateTodoViewModel()
-		viewController.modalPresentationStyle = .fullScreen
-		navigationController.present(viewController, animated: true)
+	func toTodoViewController() {
+		let viewController = TodoViewController()
+		navigationController.pushViewController(viewController, animated: true)
+	}
+	
+	func toDoneViewController() {
+		let viewController = DoneViewController()
+		navigationController.pushViewController(viewController, animated: true)
 	}
 }
