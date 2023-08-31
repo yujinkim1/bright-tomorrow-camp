@@ -8,25 +8,17 @@
 import Foundation
 
 class HomeViewModel {
-	var decodedTodoGroup: [Todo] = []
-	var decodedDoneGroup: [Done] = []
+	var catService: CatPhotoServiceImpl
 	
-	func setEmptyLiteral() -> String {
-		if let data = UserDefaults.standard.data(forKey: "TodoGroup"), !data.isEmpty {
-			return ""
-		} else {
-			return "모든 해야할 일이 완료되었습니다."
-		}
+	init(catService: CatPhotoServiceImpl) {
+		self.catService = catService
 	}
 	
-	func loadTodoGroup() -> [Todo] {
-		guard let data = UserDefaults.standard.data(forKey: "TodoGroup") else { return decodedTodoGroup }
-		do {
-			decodedTodoGroup = try JSONDecoder().decode([Todo].self, from: data)
-			return decodedTodoGroup
-		} catch {
-			print("TodoGroup 데이터 디코딩 에러: \(error)")
-		}
-		return decodedTodoGroup
+	func loadTodoGroupCount() -> Int {
+		return UserDefaultsManager.loadGroup(key: "TodoGroup", type: [Todo].self)?.count ?? 0
+	}
+	
+	func loadDoneGroupCount() -> Int {
+		return UserDefaultsManager.loadGroup(key: "DoneGroup", type: [Done].self)?.count ?? 0
 	}
 }

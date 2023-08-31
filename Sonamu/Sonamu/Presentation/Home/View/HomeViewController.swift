@@ -14,12 +14,11 @@ class HomeViewController: BaseUIViewController {
 	//MARK: - 뷰 모델
 	var viewModel: HomeViewModel?
 	
-	//TODO: - Todo 뷰 모델로 이동 해야함
-	var decodedTodoGroup: [Todo] = []
-	
 	//MARK: - UI 컴포넌트
-	private lazy var createTodoButton: UIBarButtonItem = {
-		let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.circle"), style: .plain, target: self, action: #selector(createTodoButtonTapped(_:)))
+	private lazy var refreshCatPhotoButton: UIBarButtonItem = {
+		let barButtonItem = UIBarButtonItem()
+		barButtonItem.image = UIImage(systemName: "arrow.clockwise")
+		barButtonItem.style = .plain
 		barButtonItem.isEnabled = true
 		return barButtonItem
 	}()
@@ -35,6 +34,7 @@ class HomeViewController: BaseUIViewController {
 	
 	private lazy var catPhotoView: UIImageView = {
 		let imageView = UIImageView()
+		imageView.image = UIImage(named: "imageNotFoundImage")
 		imageView.contentMode = .scaleAspectFit
 		imageView.layer.cornerRadius = CGFloat(16)
 		imageView.clipsToBounds = true
@@ -43,25 +43,14 @@ class HomeViewController: BaseUIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		self.decodedTodoGroup = viewModel?.loadTodoGroupItems() ?? []
-		catPhotoView.image = UIImage(named: "imageNotFoundImage")
-		viewModel?.catService.download { [weak self] (image) in
-			DispatchQueue.main.async {
-				if let image = image {
-					self?.catPhotoView.image = image
-				} else {
-					print("Failed to download cat image.")
-					self?.catPhotoView.image = UIImage(named: "imageNotFoundImage")
-				}
-			}
-		}
 		tableView.reloadData()
 	}
-	//MARK: - Custom Method
+	//MARK: - 커스텀 메소드
 	
 	override func setUI() {
+		tableView.register(PushToGroupCell.self, forCellReuseIdentifier: "PushToGroupCell")
 		view.addSubviews([catPhotoView, tableView])
-		navigationItem.rightBarButtonItem = createTodoButton
+		navigationItem.rightBarButtonItem = refreshCatPhotoButton
 	}
 	
 	override func setLayout() {
@@ -85,55 +74,59 @@ class HomeViewController: BaseUIViewController {
 	}
 	
 	override func setDelegate() {
-		tableView.register(TodoGroupCell.self, forCellReuseIdentifier: "TodoGroupCell")
-		tableView.register(DoneGroupCell.self, forCellReuseIdentifier: "DoneGroupCell")
 		tableView.dataSource = self
 		tableView.delegate = self
 	}
 	
-	override func addTarget() {}
+	override func addTarget() {
+		refreshCatPhotoButton.target = self
+		refreshCatPhotoButton.action = #selector(refreshCatPhotoButtonTapped(_:))
+	}
 	
-	//MARK: - Custom Action
 	@objc
-	private func createTodoButtonTapped(_ button: UIButton) {
-		coordinator?.toCreateTodoViewController()
+	private func refreshCatPhotoButtonTapped(_ button: UIBarButtonItem) {
+		catPhotoView.image = UIImage(named: "imageNotFoundImage")
+		viewModel?.catService.download { [weak self] (image) in
+			DispatchQueue.main.async {
+				if let image = image {
+					self?.catPhotoView.image = image
+				} else {
+					print("Failed to download cat image.")
+					self?.catPhotoView.image = UIImage(named: "imageNotFoundImage")
+				}
+			}
+		}
 	}
 }
 
-//MARK: - UITableView
+//MARK: - 테이블 뷰
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
-	//TODO: - TodoViewController / DoneViewController 이동 가능 셀로 변경해야함
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if section == 0 {
-			let count = viewModel?.loadTodoGroupItemCount()
-			return count ?? 0
-		} else {
-			let count = viewModel?.loadDoneGroupItemCount()
-			return count ?? 0
-		}
-	}
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "PushToGroupCell", for: indexPath) as! PushToGroupCell
 		if indexPath.section == 0 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "TodoGroupCell", for: indexPath) as! TodoGroupCell
-			cell.titleLabel.text = decodedTodoGroup[indexPath.row].content
+			let number = viewModel?.loadTodoGroupCount() ?? 0
+			let title = "해야할 일 확인하기"
+			cell.configure(with: title, number: number)
 			return cell
 		} else {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "DoneGroupCell", for: indexPath) as! DoneGroupCell
-			cell.titleLabel.text = "UserDefaults에 저장됨"
+			let number = viewModel?.loadDoneGroupCount() ?? 0
+			let title = "완료한 일 확인하기"
+			cell.configure(with: title, number: number)
 			return cell
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		switch indexPath.section {
-			case 1: coordinator?.toDoneViewController()
+			case 0: coordinator?.toTodoViewController(); print("Coordinator: \(String(describing: coordinator))")
+			case 1: coordinator?.toDoneViewController(); print("Coordinator: \(String(describing: coordinator))")
 			default: break
 		}
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let headerTitleLabel = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.size.width, height: tableView.sectionHeaderHeight))
-		headerTitleLabel.font = UIFont(name: "SUITE-ExtraBold", size: 26.0)
+		headerTitleLabel.font = UIFont(name: "SUITE-ExtraBold", size: 32.0)
 		headerTitleLabel.textColor = ColorManager.kPrimaryColor
 		if section == 0 {
 			headerTitleLabel.text = "Todo"
@@ -143,22 +136,8 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 		return headerTitleLabel
 	}
 	
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if section == 0 {
-			return "Todo"
-		} else if section == 1 {
-			return "Done"
-		}
-		return nil
-	}
-	
-	func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-		if section == 0 {
-			return "\(String(describing: viewModel?.loadTodoGroupItemCount()))개의 항목"
-		} else if section == 1 {
-			return "\(String(describing: viewModel?.loadDoneGroupItemCount()))개의 항목"
-		}
-		return nil
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 1
 	}
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
