@@ -8,16 +8,16 @@
 import UIKit
 
 class BaseUIViewController: UIViewController {
-	//MARK: - View Constructor
+	//MARK: - 생성자
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		view.backgroundColor = ColorManager.kBackgroundColor
+		view.backgroundColor = .systemGray6
 		hideKeyboardWhenTappedAround()
 		setTitle()
 		setUI()
 		setLayout()
-		addTarget()
 		setDelegate()
+		addTarget()
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -28,14 +28,14 @@ class BaseUIViewController: UIViewController {
 		super.viewWillDisappear(animated)
 	}
 	
-	//MARK: - Custom Method
+	//MARK: - 커스텀 메소드
 	func setTitle() {}
 	
 	func setUI() {}
 	
 	func setLayout() {}
 	
-	func addTarget() {}
-	
 	func setDelegate() {}
+	
+	func addTarget() {}
 }
