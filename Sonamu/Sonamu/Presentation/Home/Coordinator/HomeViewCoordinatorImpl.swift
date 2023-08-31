@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewCoordinatorImpl: Coordinator {
 	var navigationController: UINavigationController
+	var todoViewCoordinator: TodoViewCoordinatorImpl?
 	
 	init(navigationController: UINavigationController) {
 		self.navigationController = navigationController
@@ -16,31 +17,23 @@ class HomeViewCoordinatorImpl: Coordinator {
 	
 	func start() {
 		let viewController = HomeViewController()
-		viewController.viewModel = HomeViewModel()
+		let catPhotoService = CatPhotoServiceImpl()
+		viewController.viewModel = HomeViewModel(catService: catPhotoService)
 		viewController.coordinator = self
 		navigationController.pushViewController(viewController, animated: false)
 	}
 	
-	//TODO: - TodoViewCoordinatorImpl 코디네이터 클래스로 이동해야함.
-	func toCreateTodoViewController() {
-		let viewController = CreateTodoViewController()
-		viewController.viewModel = CreateTodoViewModel()
-		let navigationController = UINavigationController(rootViewController: viewController)
-		navigationController.modalPresentationStyle = .fullScreen
-		self.navigationController.present(navigationController, animated: true)
-	}
-	
-	//TODO: - TodoViewController ViewModel
 	func toTodoViewController() {
 		let viewController = TodoViewController()
-		//viewController.viewModel = TodoViewModel()
+		viewController.viewModel = TodoViewModel()
+		todoViewCoordinator = TodoViewCoordinatorImpl(navigationController: navigationController)
+		viewController.coordinator = todoViewCoordinator
 		navigationController.pushViewController(viewController, animated: true)
 	}
 	
-	//TODO: - DoneViewController ViewModel
 	func toDoneViewController() {
 		let viewController = DoneViewController()
-		//viewController.viewModel = DoneViewModel()
+		viewController.viewModel = DoneViewModel()
 		navigationController.pushViewController(viewController, animated: true)
 	}
 }
