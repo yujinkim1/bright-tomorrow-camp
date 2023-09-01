@@ -8,8 +8,8 @@
 import UIKit
 
 class ColorManager {
-	static let kPrimaryColor = UIColor(named: "snmPrimaryColor")
-	static let kSecondaryColor = UIColor(named: "snmSecondaryColor")
-	static let kErrorColor = UIColor(named: "snmErrorColor")
-	static let kBackgroundColor = UIColor(named: "snmBackgroundColor")
+    static let kPrimaryColor = UIColor(named: "snmPrimaryColor")
+    static let kSecondaryColor = UIColor(named: "snmSecondaryColor")
+    static let kErrorColor = UIColor(named: "snmErrorColor")
+    static let kBackgroundColor = UIColor(named: "snmBackgroundColor")
 }

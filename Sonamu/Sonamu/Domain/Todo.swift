@@ -8,6 +8,6 @@
 import Foundation
 
 struct Todo: Codable {
-	var content: String
-	var isCompleted: Bool
+    var content: String
+    var isCompleted: Bool
 }

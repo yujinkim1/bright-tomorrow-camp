@@ -8,11 +8,11 @@
 import UIKit
 
 class CreateTodoViewCoordinatorImpl: Coordinator {
-	var navigationController: UINavigationController
-	
-	init(navigationController: UINavigationController) {
-		self.navigationController = navigationController
-	}
-	
-	func start() {}
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    func start() {}
 }

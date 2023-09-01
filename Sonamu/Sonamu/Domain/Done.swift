@@ -8,6 +8,6 @@
 import Foundation
 
 struct Done: Codable {
-	let content: String
-	let isCompleted: Bool
+    let content: String
+    let isCompleted: Bool
 }
